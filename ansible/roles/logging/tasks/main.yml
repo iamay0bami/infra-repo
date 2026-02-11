@@ -16,8 +16,12 @@
     chart_ref: elastic/elasticsearch
     release_namespace: logging
     values:
-      replicas: 1 
+      replicas: 1
       minimumMasterNodes: 1
+      resources:
+        requests:
+          memory: "1Gi" 
+          cpu: "500m"
 
 - name: Install Kibana
   kubernetes.core.helm:
