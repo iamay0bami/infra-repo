@@ -1,0 +1,3 @@
+- name: Test Logging Role
+  debug:
+    msg: 'Logging installation will go here'

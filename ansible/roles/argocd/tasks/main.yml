@@ -1,0 +1,3 @@
+- name: Test ArgoCD Role
+  debug:
+    msg: 'ArgoCD installation will go here'

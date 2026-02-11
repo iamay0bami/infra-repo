@@ -1,0 +1,8 @@
+---
+- name: Post-Provisioning EKS Configuration
+  hosts: localhost
+  become: false
+  roles:
+    - argocd
+    - monitoring
+    - logging
