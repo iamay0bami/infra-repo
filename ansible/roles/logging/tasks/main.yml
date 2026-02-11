@@ -1,3 +1,26 @@
-- name: Test Logging Role
-  debug:
-    msg: 'Logging installation will go here'
+---
+- name: Create logging namespace
+  kubernetes.core.k8s:
+    name: logging
+    kind: Namespace
+    state: present
+
+- name: Add Elastic Helm repo
+  kubernetes.core.helm_repository:
+    name: elastic
+    repo_url: "https://helm.elastic.co"
+
+- name: Install Elasticsearch
+  kubernetes.core.helm:
+    name: elasticsearch
+    chart_ref: elastic/elasticsearch
+    release_namespace: logging
+    values:
+      replicas: 1 
+      minimumMasterNodes: 1
+
+- name: Install Kibana
+  kubernetes.core.helm:
+    name: kibana
+    chart_ref: elastic/kibana
+    release_namespace: logging

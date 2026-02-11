@@ -4,6 +4,7 @@
     name: argocd
     kind: Namespace
     state: present
+    kubeconfig: "/home/codespace/.kube/config" # Explicit path
 
 - name: Add ArgoCD Helm repo
   kubernetes.core.helm_repository:
@@ -16,7 +17,8 @@
     chart_ref: argo/argo-cd
     release_namespace: argocd
     create_namespace: true
+    kubeconfig: "/home/codespace/.kube/config" # Explicit path
     values:
       server:
         service:
-          type: LoadBalancer # This gives you a URL to access the UI
+          type: LoadBalancer
