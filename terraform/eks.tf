@@ -14,7 +14,7 @@ module "eks" {
       min_size     = 1
       max_size     = 3
       desired_size = 2
-      instance_types = ["t3.medium"] # Small enough to stay low cost, big enough for microservices
+      instance_types = ["c7i-flex.large"] # Small enough to stay low cost, big enough for microservices
     }
   }
 }
